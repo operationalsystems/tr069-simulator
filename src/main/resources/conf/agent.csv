@@ -1,2 +1,2 @@
 startip, endip, acs_url, conn_req_url, http_port, periodic_inform, dump_location, username, password, authtype
-192.168.1.231, 192.168.1.232, http://snmp.me:9090/tr069/ws?wsdl, /wsdl, 8035, 300, /dump/microcell/, myuser, mypasswd, basic
+172.16.73.53, 172.16.73.53,  http://acs-beta-rest.pavlovmedia.net/services/acs, http://acs-beta-rest.pavlovmedia.net/, 80, 300, /dump/calix_ont/,tbrown@pavlovmedia.com, F6qFrP2F, basic
