@@ -6,7 +6,7 @@
     </prerequisites>
 
     <groupId>tr069</groupId>
-    <artifactId>tr069</artifactId>
+    <artifactId>tr069-sim</artifactId>
     <version>0.7.0-SNAPSHOT</version>
     <name>TR069 Simulator</name>	
     <repositories>
@@ -19,6 +19,10 @@
     
     <properties>
         <dropwizard.version>0.6.1</dropwizard.version>
+        <!-- Docker stuff -->
+        <docker.image.prefix>dockerhub.pavlovmedia.net</docker.image.prefix>
+        <!-- override this with -Dsimulator.type=Xxx to build a different docker image -->
+        <simulator.type>microcell</simulator.type>
     </properties>
 
 
@@ -171,6 +175,30 @@
                 <configuration>
                     <skip>true</skip>
                     <skipDeploy>true</skipDeploy>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.6</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <buildArgs>
+                        <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
+                        <SIMULATOR>${simulator.type}</SIMULATOR>
+                    </buildArgs>
+                    <repository>${docker.image.prefix}/${project.artifactId}-${simulator.type}</repository>
+                    <!-- Add a tag here if you want to tag this other than latest -->
+                    <!-- NB: if you do, it won't be tagged as latest -->
+                    <!-- <tag>${project.version}</tag> -->
                 </configuration>
             </plugin>
             <plugin>
