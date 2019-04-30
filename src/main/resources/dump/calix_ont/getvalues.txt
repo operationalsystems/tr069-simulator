@@ -76,7 +76,7 @@
             </ParameterValueStruct>
             <ParameterValueStruct>
               <Name>InternetGatewayDevice.DeviceInfo.SerialNumber</Name>
-              <Value xsi:type="xsd:string">CXNK001D0D33</Value>
+              <Value xsi:type="xsd:string">SIM070000001</Value>
             </ParameterValueStruct>
             <ParameterValueStruct>
               <Name>InternetGatewayDevice.DeviceInfo.X_000631_RegistrationId</Name>
@@ -100,7 +100,7 @@
             </ParameterValueStruct>
             <ParameterValueStruct>
               <Name>InternetGatewayDevice.DeviceInfo.AdditionalHardwareVersion</Name>
-              <Value xsi:type="xsd:string">UnitSerialNumber=261502000919</Value>
+              <Value xsi:type="xsd:string">UnitSerialNumber=999999000001</Value>
             </ParameterValueStruct>
             <ParameterValueStruct>
               <Name>InternetGatewayDevice.DeviceInfo.AdditionalSoftwareVersion</Name>

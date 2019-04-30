@@ -150,9 +150,9 @@ public class CPEClientSession {
         }
 	
 	private ACSResponse sendData (WebResource service, String reqString) {
-		
-		Builder builder = service.accept(MediaType.APPLICATION_XML)
-				.type(MediaType.APPLICATION_XML).header("User-Agent", this.useragent);
+
+		Builder builder = service.type(MediaType.TEXT_XML).header("User-Agent", this.useragent);
+
 		for ( NewCookie c : cookies ) {
 		    //System.out.println( "Request Setting cookie  ======================== " + c.getName() + " = " + c.getValue() );
 		   builder = builder.cookie( c );
