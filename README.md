@@ -54,6 +54,23 @@ java -jar target/tr069-0.6.2-SNAPSHOT.jar server simulator.yml<br>
 Or simply doubleclick the batch launcher (for Windows).
 <b>Note:</b> Java must be available in your system.
 
+### Dockerfile
+The Dockerfile packages all the data in the dump directory at the project root into the docker image.
+The build requires a build argument JAR_FILE that is passed from the maven plugin to avoid having version dependencies
+in the Dockerfile directly.
+
+When run in a docker container, the agent.csv file is not required. Instead the following environment variables can be
+passed, from docker-compose, or from the docker command line --env-file.
+
+- SIMULATOR: (required) Name of the subdirectory in which the simulator configuration files are found.
+- ACS_URL: (required) URL to the ACS TR-069 server.
+- PI_INTERVAL: Initial periodic inform interval in seconds, defaults to 600 if not set.
+- CR_PATH: The path component of the connection request URL for the simulator, defaults to /.
+- CR_PORT: The port on which the simulator listens for connection requests, defaults to 8035.
+- AUTH_TYPE: Type of authentication, basic or digest. Defaults to none.
+- AUTH_USER_NAME: User name for authentication, if required.
+- AUTH_CREDENTIAL: Password for authentication, if required.
+ 
 ### Requirement
 
 - JDK >=1.7
