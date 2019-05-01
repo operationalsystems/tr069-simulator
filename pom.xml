@@ -21,8 +21,6 @@
         <dropwizard.version>0.6.1</dropwizard.version>
         <!-- Docker stuff -->
         <docker.image.prefix>dockerhub.pavlovmedia.net</docker.image.prefix>
-        <!-- override this with -Dsimulator.type=Xxx to build a different docker image -->
-        <simulator.type>microcell</simulator.type>
     </properties>
 
 
@@ -193,9 +191,8 @@
                 <configuration>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
-                        <SIMULATOR>${simulator.type}</SIMULATOR>
                     </buildArgs>
-                    <repository>${docker.image.prefix}/${project.artifactId}-${simulator.type}</repository>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
                     <!-- Add a tag here if you want to tag this other than latest -->
                     <!-- NB: if you do, it won't be tagged as latest -->
                     <!-- <tag>${project.version}</tag> -->

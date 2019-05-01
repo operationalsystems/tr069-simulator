@@ -1,2 +1,2 @@
 startip, endip, acs_url, conn_req_url, http_port, periodic_inform, dump_location, username, password, authtype, useragent, xmlformat
-192.168.1.211, 192.168.1.211, http://10.0.2.15:8181/services/acs, /cr, 8035, 180, /dump/, user1, pass123!, basic
+192.168.1.211, 192.168.1.211, http://10.0.0.0:8080/services/acs, /cr, 8035, 180, /dump/microcell/, user, pass123!, basic
