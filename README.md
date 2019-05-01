@@ -60,7 +60,8 @@ The build requires a build argument JAR_FILE that is passed from the maven plugi
 in the Dockerfile directly.
 
 When run in a docker container, the agent.csv file is not required. Instead the following environment variables can be
-passed, from docker-compose, or from the docker command line --env-file.
+passed, from docker-compose, or from the docker command line --env-file. The agent file
+can be used if desired by mounting a volume at /conf in the docker image.
 
 - SIMULATOR: (required) Name of the subdirectory in which the simulator configuration files are found.
 - ACS_URL: (required) URL to the ACS TR-069 server.
