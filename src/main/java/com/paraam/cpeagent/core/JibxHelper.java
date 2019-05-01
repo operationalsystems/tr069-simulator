@@ -34,6 +34,17 @@ public class JibxHelper {
 		}
 		return null;
 	}
+
+	/**
+	 * Add/subtract from XML document to help resolve Pavlov ACS/Simulator mismatches
+	 * @param xml
+	 * @return
+	 */
+	private static String filterXML( String xml) {
+		String retVal = xml;
+		retVal = retVal.replaceAll("cwmp:ParameterValueStruct","ParameterValueStruct");
+		return retVal;
+	}
 	/**
 	 * Unmarshal this xml Message to an object.
 	 * @param xml
@@ -48,7 +59,8 @@ public class JibxHelper {
 		try {
 			IBindingFactory jc = BindingDirectory.getFactory(bindingName, packageName);
 			IUnmarshallingContext unmarshaller = jc.createUnmarshallingContext();
-			Reader inStream = new StringReader(xml);
+			String filteredXML = filterXML(xml);
+			Reader inStream = new StringReader(filteredXML);
 			Object message = unmarshaller.unmarshalDocument( inStream, bindingName);
 			return message;
 		} catch (JiBXException e) {
