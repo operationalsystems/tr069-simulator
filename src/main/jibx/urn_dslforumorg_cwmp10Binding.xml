@@ -166,7 +166,7 @@
     <value style="element" name="Status" get-method="getStatus" set-method="setStatus"/>
   </mapping>
   <mapping class="org.dslforum.cwmp_1_0.GetParameterValues" name="GetParameterValues" ns="urn:dslforum-org:cwmp-1-0">
-    <structure map-as="tns:ParameterNames" get-method="getParameterNames" set-method="setParameterNames" name="ParameterNames" ns="urn:dslforum-org:cwmp-1-0"/>
+    <structure map-as="tns:ParameterNames" get-method="getParameterNames" set-method="setParameterNames" name="ParameterNames"/>
   </mapping>
   <mapping class="org.dslforum.cwmp_1_0.GetParameterValuesResponse" name="GetParameterValuesResponse" ns="urn:dslforum-org:cwmp-1-0">
     <structure map-as="tns:ParameterValueList" get-method="getParameterList" set-method="setParameterList" name="ParameterList"/>

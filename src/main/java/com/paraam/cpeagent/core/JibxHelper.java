@@ -42,13 +42,15 @@ public class JibxHelper {
 	 */
 	private static String filterXML( String xml) {
 		String retVal = xml;
-		retVal = retVal.replaceAll("cwmp:ParameterValueStruct","ParameterValueStruct");
+		// HMD no-op here as we've fixed the message namespaces
+		// leaving this as a hook in case some non-compliant devices need different
+		// filtering
 		return retVal;
 	}
 	/**
 	 * Unmarshal this xml Message to an object.
 	 * @param xml
-	 * @param system
+	 * @param version
 	 * @return
 	 */
 	public static Object unmarshalMessage(String xml, String version)

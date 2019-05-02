@@ -1,2 +1,2 @@
 startip, endip, acs_url, conn_req_url, http_port, periodic_inform, dump_location, username, password, authtype, useragent, xmlformat
-172.16.73.53, 172.16.73.53, http://acs-beta-rest.pavlovmedia.net/services/acs, /services/acs, 8035, 300, /dump/calix_ont/, pavlov-cpe, admin123!, basic, BCM_TR69_CPE_04_00
+172.16.73.53, 172.16.73.53, http://localhost:8181/services/acs, /services/acs, 8035, 300, dump/calix_ont/, pavlov-cpe, admin123!, basic, BCM_TR69_CPE_04_00
