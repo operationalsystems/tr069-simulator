@@ -28,6 +28,9 @@ Username<br>
 Password<br>
 Authtype<br>
 Useragent<br>
+XML Formatter<br>
+Serial Number Format (printf style)<br>
+Serial Number (integer)<br>
 
 You can modify these parameter according to your requirements. To simulate multiple CPE devices, provide the start and<br>
 end ipaddress. Periodic Inform Interval is in seconds. Simulator will send Inform request based on this parameter.<br><br> 
