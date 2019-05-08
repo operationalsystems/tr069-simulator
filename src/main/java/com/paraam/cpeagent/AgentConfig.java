@@ -15,6 +15,8 @@ public class AgentConfig {
     private String authType;
     private String userAgent;
     private String xmlFormat;
+    private String serialNumberFmt = "%08d";
+    private int serialNumber = 0;
 
     public String getIpAddress() {
         return this.ipAddress;
@@ -104,6 +106,22 @@ public class AgentConfig {
         this.xmlFormat = xmlFormat;
     }
 
+    public String getSerialNumberFmt() {
+        return this.serialNumberFmt;
+    }
+
+    public void setSerialNumberFmt(String serialNumberFmt) {
+        this.serialNumberFmt = serialNumberFmt;
+    }
+
+    public int getSerialNumber() {
+        return this.serialNumber;
+    }
+
+    public void setSerialNumber(int serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
     @Override
     public String toString() {
         return "AgentConfig{" +
@@ -118,6 +136,8 @@ public class AgentConfig {
                 ", authType='" + authType + '\'' +
                 ", userAgent='" + userAgent + '\'' +
                 ", xmlFormat='" + xmlFormat + '\'' +
+                ", serialNumberFmt='" + serialNumberFmt + '\'' +
+                ", serialNumber='" + serialNumber + '\'' +
                 '}';
     }
 }
