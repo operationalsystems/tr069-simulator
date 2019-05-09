@@ -15,6 +15,7 @@ ENV AUTH_TYPE basic
 ENV ACS_URL http://localhost:8080/services/acs
 ENV SERIAL_NUMBER_FMT CXNK%08d
 ENV SERIAL_NUMBER 0
+ENV IP_ADDRESS 127.0.0.1
 
 RUN mkdir /app
 RUN mkdir /dump

@@ -20,6 +20,7 @@ import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
 
 public class SimulatorService extends Service<SimulatorConfiguration> {
+    // names of environment variables provided for Dockerfile.
     private static final String PI_INTERVAL = "PI_INTERVAL";
     private static final String AUTH_USER_NAME = "AUTH_USER_NAME";
     private static final String AUTH_CREDENTIAL = "AUTH_CREDENTIAL";
@@ -31,6 +32,7 @@ public class SimulatorService extends Service<SimulatorConfiguration> {
     private static final String DUMP_PATH_FORMAT = "/dump/%s/";
     private static final String SERIAL_NUMBER_FORMAT = "SERIAL_NUMBER_FMT";
     private static final String SERIAL_NUMBER = "SERIAL_NUMBER";
+    private static final String IP_ADDRESS = "IP_ADDRESS";
 
     public static void main(final String[] args) throws Exception {
         try {
@@ -140,20 +142,9 @@ public class SimulatorService extends Service<SimulatorConfiguration> {
         final AgentConfig config = new AgentConfig();
         config.setUserAgent("tr069-simulator");
         config.setXmlFormat("");
-        try {
-            final NetworkInterface iface = NetworkInterface.getByName("eth0");
-            final Enumeration<InetAddress> addresses = iface.getInetAddresses();
-            if (addresses.hasMoreElements()) {
-                final InetAddress address = addresses.nextElement();
-                config.setIpAddress(address.getHostAddress());
-            } else {
-                throw new IllegalStateException("Unable to get IP address from eth0");
-            }
-        } catch (final SocketException e) {
-            throw new IllegalStateException("No eth0 interface, or insufficient privilege");
-        }
 
         final Map<String, String> environment = System.getenv();
+        config.setIpAddress(this.getOrDefault(SimulatorService.IP_ADDRESS, environment, "127.0.0.1"));
         final String piIntervalInSec = this.getOrDefault(SimulatorService.PI_INTERVAL, environment, "600");
         config.setPeriodicInformInterval(Integer.parseInt(piIntervalInSec));
         config.setAuthType(this.getOrDefault(SimulatorService.AUTH_TYPE, environment, ""));
