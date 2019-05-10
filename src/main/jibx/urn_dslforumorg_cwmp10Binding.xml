@@ -159,7 +159,7 @@
   </mapping>
   <mapping class="org.dslforum.cwmp_1_0.SetParameterValues" name="SetParameterValues" ns="urn:dslforum-org:cwmp-1-0">
     <structure map-as="tns:ParameterValueList" get-method="getParameterList" set-method="setParameterList" name="ParameterList"/>
-    <value style="element" name="ParameterKey" get-method="getParameterKey" set-method="setParameterKey"/>
+    <value usage="optional" style="element" name="ParameterKey" get-method="getParameterKey" set-method="setParameterKey"/>
   </mapping>
   <mapping class="org.dslforum.cwmp_1_0.SetParameterValuesResponse" name="SetParameterValuesResponse" ns="urn:dslforum-org:cwmp-1-0">
     <format type="org.dslforum.cwmp_1_0.SetParameterValuesResponse$Status" deserializer="org.dslforum.cwmp_1_0.SetParameterValuesResponse$Status.fromValue"/>
@@ -183,7 +183,7 @@
   </mapping>
   <mapping class="org.dslforum.cwmp_1_0.SetParameterAttributesResponse" name="SetParameterAttributesResponse" ns="urn:dslforum-org:cwmp-1-0"/>
   <mapping class="org.dslforum.cwmp_1_0.GetParameterAttributes" name="GetParameterAttributes" ns="urn:dslforum-org:cwmp-1-0">
-    <structure map-as="tns:ParameterNames" get-method="getParameterNames" set-method="setParameterNames" name="ParameterNames"/>
+    <structure map-as="tns:ParameterNames" get-method="getParameterNames" set-method="setParameterNames" name="ParameterNames" ns="urn:dslforum-org:cwmp-1-0"/>
   </mapping>
   <mapping class="org.dslforum.cwmp_1_0.GetParameterAttributesResponse" name="GetParameterAttributesResponse" ns="urn:dslforum-org:cwmp-1-0">
     <structure map-as="tns:ParameterAttributeList" get-method="getParameterList" set-method="setParameterList" name="ParameterList"/>

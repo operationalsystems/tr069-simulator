@@ -210,7 +210,7 @@
                     <excludeSchemaBindings>
                         <excludeSchemaBindings>*binding.out.xml</excludeSchemaBindings>
                     </excludeSchemaBindings>
-                    <verbose>false</verbose>
+                    <verbose>true</verbose>
                 </configuration>
                 <executions>
                     <execution>
