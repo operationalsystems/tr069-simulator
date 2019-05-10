@@ -146,7 +146,6 @@ public class CPEClientSession {
             handleACSRequest(newresp);
         }
         //System.out.println(data.toString()) ;
-
     }
 
     private ACSResponse sendData(WebResource service, String reqString) {
