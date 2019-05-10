@@ -13,6 +13,7 @@ ENV AUTH_USER_NAME user
 ENV AUTH_CREDENTIAL pass123!
 ENV AUTH_TYPE basic
 ENV ACS_URL http://localhost:8080/services/acs
+ENV IP_ADDRESS 127.0.0.1
 
 RUN mkdir /app
 RUN mkdir /dump
