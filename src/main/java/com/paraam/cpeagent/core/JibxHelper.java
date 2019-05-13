@@ -34,10 +34,23 @@ public class JibxHelper {
 		}
 		return null;
 	}
+
+	/**
+	 * Add/subtract from XML document to help resolve Pavlov ACS/Simulator mismatches
+	 * @param xml
+	 * @return
+	 */
+	private static String filterXML( String xml) {
+		String retVal = xml;
+		// HMD no-op here as we've fixed the message namespaces
+		// leaving this as a hook in case some non-compliant devices need different
+		// filtering
+		return retVal;
+	}
 	/**
 	 * Unmarshal this xml Message to an object.
 	 * @param xml
-	 * @param system
+	 * @param version
 	 * @return
 	 */
 	public static Object unmarshalMessage(String xml, String version)
@@ -48,7 +61,8 @@ public class JibxHelper {
 		try {
 			IBindingFactory jc = BindingDirectory.getFactory(bindingName, packageName);
 			IUnmarshallingContext unmarshaller = jc.createUnmarshallingContext();
-			Reader inStream = new StringReader(xml);
+			String filteredXML = filterXML(xml);
+			Reader inStream = new StringReader(filteredXML);
 			Object message = unmarshaller.unmarshalDocument( inStream, bindingName);
 			return message;
 		} catch (JiBXException e) {

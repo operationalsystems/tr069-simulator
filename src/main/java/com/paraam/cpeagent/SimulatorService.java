@@ -1,15 +1,5 @@
 package com.paraam.cpeagent;
 
-import java.io.File;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Map;
-
 import com.bazaarvoice.dropwizard.assets.ConfiguredAssetsBundle;
 import com.hubspot.dropwizard.guice.GuiceBundle;
 import com.paraam.cpeagent.core.CPEUtil;
@@ -19,8 +9,12 @@ import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
+
 public class SimulatorService extends Service<SimulatorConfiguration> {
-    // names of environment variables provided for Dockerfile.
+    // Environment variable names for dockerfile
     private static final String PI_INTERVAL = "PI_INTERVAL";
     private static final String AUTH_USER_NAME = "AUTH_USER_NAME";
     private static final String AUTH_CREDENTIAL = "AUTH_CREDENTIAL";
