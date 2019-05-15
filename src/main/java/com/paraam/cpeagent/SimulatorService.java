@@ -23,9 +23,10 @@ public class SimulatorService extends Service<SimulatorConfiguration> {
     private static final String CR_PORT = "CR_PORT";
     private static final String SIMULATOR = "SIMULATOR";
     private static final String ACS_URL = "ACS_URL";
-    private static final String IP_ADDRESS = "IP_ADDRESS";
-
     private static final String DUMP_PATH_FORMAT = "/dump/%s/";
+    private static final String SERIAL_NUMBER_FORMAT = "SERIAL_NUMBER_FMT";
+    private static final String SERIAL_NUMBER = "SERIAL_NUMBER";
+    private static final String IP_ADDRESS = "IP_ADDRESS";
 
     public static void main(final String[] args) throws Exception {
         try {
@@ -54,7 +55,8 @@ public class SimulatorService extends Service<SimulatorConfiguration> {
         final CPEWorker worker = new CPEWorker(ipadr, config.getConnectionRequestPort(), config.getAcsUrl(),
                 config.getConnectionRequestPath(), config.getPeriodicInformInterval(),
                 config.getSimulatorLocation(), config.getAuthUserName(), config.getAuthPassword(),
-                config.getAuthType(), config.getUserAgent(), config.getXmlFormat(), "");
+                config.getAuthType(), config.getUserAgent(), config.getXmlFormat(),
+                config.getSerialNumberFmt(), config.getSerialNumber());
         final Thread cpthread = new Thread(worker, "WorkerThread_" + 0);
         cpthread.start();
     }
@@ -117,6 +119,10 @@ public class SimulatorService extends Service<SimulatorConfiguration> {
             config.setXmlFormat(csvline[11].trim());
         }
 
+        if (csvline.length >= 14) {
+            config.setSerialNumberFmt(csvline[12].trim());
+            config.setSerialNumber(Integer.parseInt(csvline[14].trim()));
+        }
         return config;
     }
 
@@ -145,6 +151,9 @@ public class SimulatorService extends Service<SimulatorConfiguration> {
         config.setSimulatorLocation(String.format(SimulatorService.DUMP_PATH_FORMAT, simulator));
         config.setAcsUrl(this.getOrDefault(SimulatorService.ACS_URL, environment,
                 "http://localhost:8080/services/acs"));
+        config.setSerialNumberFmt(this.getOrDefault(SimulatorService.SERIAL_NUMBER_FORMAT, environment, "%08d"));
+        final String serialNumberValue = this.getOrDefault(SimulatorService.SERIAL_NUMBER, environment, "0");
+        config.setSerialNumber(Integer.parseInt(serialNumberValue));
 
         return config;
     }
